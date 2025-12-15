@@ -1,4 +1,4 @@
-# **Business Funnel Analysis for Revenue Optimization**
+# **▼📊 Business Funnel Analysis for Revenue Optimization**
 
 **Industry:** E-Commerce / B2B Marketplace Analytics
 
