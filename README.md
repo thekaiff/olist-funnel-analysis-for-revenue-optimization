@@ -1,10 +1,10 @@
-# Business Funnel Analysis for Revenue Optimization
+# **Business Funnel Analysis for Revenue Optimization**
 
 **Industry:** E-Commerce / B2B Marketplace Analytics
 
 ---
 
-## 🧠 Executive summary
+## 🧠 **Executive summary**
 
 This project analyzes the complete business funnel — from Marketing Qualified Leads (MQLs) to Closed Deals and finally Order Delivery performance — using a real-world, multi-table dataset modeled on company-grade data.
 
@@ -24,14 +24,14 @@ These insights directly inform marketing spend optimization, sales prioritizatio
 
 ---
 
-## ❗ Business problem
+## ❗ **Business problem**
 
-The business lacked a single, connected view of:
+**The business lacked a single, connected view of:**
 - How efficiently leads move through the funnel
 - Which channels, segments, and teams drive conversions
 - Where time delays and bottlenecks occur post-sale
 
-Stakeholders needed answers to questions like:
+**Stakeholders needed answers to questions like:**
 - _Where are we losing leads?_
 - _Which channels and sales reps perform best?_
 - _How fast do deals close — and does speed matter?_
@@ -39,7 +39,7 @@ Stakeholders needed answers to questions like:
 - 
 ---
 
-## 🖼️ Dashboard Preview:
+## 🖼️ **Dashboard Preview:**
 
 > ```markdown
 > ![Dashboard](./Images/Dashboard.gif)
@@ -49,138 +49,118 @@ Stakeholders needed answers to questions like:
 
 ---
 
-## 🛠️ Methodology (brief)
+## 🛠️ **Methodology (What I Did & Why)**
 
-* **Data engineering:** SQL CTEs to join purchase, sales, price and freight; read into Pandas, cleanup, and save a `vendor_sales_summary` CSV + write-back to SQLite.
-* **Exploratory analysis:** distributions, boxplots, and outlier checks to understand price and margin spread.
-* **Aggregation & segmentation:** vendor-level and brand-level aggregation, percentile binning (quartiles) for Top/Mid/Low segmentation.
-* **Statistical testing:** two-sample t-test to compare profit margins between top- and low-performing vendors; 95% confidence intervals using `scipy.stats`/`numpy`.
-* **Visualization:** Power BI dashboard with KPI cards, Pareto (combo chart), vendor risk heatmap, scatter plots for profit vs. sales, donut for vendor dependency, and boxplots for bulk pricing impact.
+**1️⃣ Exploratory Data Analysis (EDA)**
+- Validated data quality across 5 cleaned datasets
+- Checked nulls, date consistency, unique keys, and distributions
+- Ensured datasets were **analysis-ready** before modeling
 
-**Why this approach?** It balances reproducible ETL, defensible statistics, and executive-friendly visuals — making insights operational for procurement and business teams.
+**2️⃣ Funnel & Conversion Analysis (Python)**
+Used Pandas, NumPy, Matplotlib, Seaborn to:
+- Calculate overall and segmented conversion rates
+- Analyze conversion by:
+    - Marketing channel (origin)
+    - Business segment
+    - Lead type & behavior profile
+- Identify **high-leakage funnel stages**
 
----
+**3️⃣ Time-Based & Velocity Analysis**
+- Measured time-to-close from first contact → deal won
+- Segmented deals into velocity buckets (0–7, 8–15, 30+ days)
+- Proved that **faster closures strongly correlate with higher success**
 
-## 🧩 Skills & tools used
+**4️⃣ Sales Team Performance**
+- Ranked top SDRs and SRs by closed deals
+- Highlighted performance skew instead of assuming uniform productivity
 
-* **Languages:** Python (pandas, numpy, scipy, matplotlib)
-* **Database:** SQLite
-* **BI / Viz:** Power BI (custom visuals for boxplot/histogram where needed)
-* **Other:** GitHub (project repo & README), basic SQL (CTEs, GROUP BY), DAX (measures & helpful calculated tables)
+**5️⃣ Order & Delivery Analytics**
+- Measured:
+    - Average delivery time (~12 days)
+    - Delay rate (~8%)
+    - Stage-wise time variability
+- Identified **carrier handover** as the biggest operational bottleneck
 
----
-
-## 📈 Results — Key findings (actionable & quantified)
-
-1. **Bulk purchase advantage:** Large-order buyers pay significantly less per unit vs Small buyers — observed **~72%** reduction in unit purchase price between Small and Large order bins. Recommendation: implement tiered bulk discounts and enforce minimum economic order quantities for SKUs with stable demand.
-
-2. **Top vendors dominate spend:** A Pareto analysis shows a small set of vendors accounts for the majority of purchase dollars (Top 10 vendors make up the lion’s share). This creates supplier concentration risk and negotiation opportunities.
-
-3. **Profit vs volume trade-off:** High-volume vendors often have lower margins (competitive pricing), while low-volume vendors sometimes hold higher margins but low sales — candidates for promotional campaigns to grow volume.
-
-4. **Inventory risk (unsold capital):** Several vendors contribute disproportionately to unsold inventory value. Reducing order quantities, launching clearance for slow SKUs, or returning to vendor (if contractual) will free capital.
-
-5. **Statistical validation:** The difference in mean profit margins between top-performing and low-performing vendors is statistically significant (t-test: p < 0.001), with 95% CIs showing non-overlapping ranges — strong evidence to guide differentiated vendor strategies.
-
----
-
-## Business recommendations (stakeholder-focused)
-
-* **Procurement:** renegotiate terms with top-volume vendors for freight & unit price, and maintain strategic relationships with best-performing partners.
-* **Category & Pricing:** run targeted promotions or bundle offers for premium brands with high margins but low volume — aim to increase sell-through without eroding margin.
-* **Inventory:** implement min/max reorder policies and monitor SKU-level stock turnover; flag SKUs with StockTurnover < 1 for remediation.
-* **Risk:** diversify supplier base for critical categories where Top 10 vendor dependency > X% (add contractual alternatives).
-* **Reporting:** expose the Power BI dashboard to buyers and finance; include an automated weekly export of `UnsoldInventoryValue` by vendor into procurement reviews.
+**6️⃣ Dashboarding (Power BI)**
+- Built a **2-page interactive dashboard**
+- Single slicer: `business_segment`
+- Designed visuals for executives, sales leaders, and ops teams
+- Avoided circular relationships and unnecessary DAX complexity
 
 ---
 
-## 🧮 How I Measured Key Metrics (Python & DAX)
+## 🧩 **Skills & tools used**
 
-This section highlights the core logic behind the most important calculations used throughout the project.
+- **Python:** Pandas, NumPy, Matplotlib, Seaborn
+- **EDA & Statistical Thinking**
+- **Business Funnel Analysis**
+- **Time-Series & Velocity Metrics**
+- **Power BI:** Data Modeling, Relationships, DAX, Visual Design
+- **SQL-style joins & data preparation**
+- **Storytelling with data**
 
-### 1️⃣ Purchase Contribution & Pareto (Python)
+---
 
-```python
-# Total purchase contribution percentage
-vendor_sales_summary['PurchaseContribution(%)'] = (
-    vendor_sales_summary['TotalPurchaseDollars'] / vendor_sales_summary['TotalPurchaseDollars'].sum()
-) * 100
+## **📈 Results & Insights **
 
-# Cumulative contribution (Pareto)
-vendor_sales_summary = vendor_sales_summary.sort_values('TotalPurchaseDollars', ascending=False)
-vendor_sales_summary['CumulativeContribution(%)'] = vendor_sales_summary['PurchaseContribution(%)'].cumsum()
-```
+- 🔻 Low MQL → Closed conversion (~10%)
+    → Indicates need for better lead qualification or channel optimization
 
-### 2️⃣ Profit Margin Calculation (Python)
+- 🏎️ Fast deals win
+    → Majority of successful deals close within 15 days
 
-```python
-vendor_sales_summary['ProfitMargin'] = (
-    vendor_sales_summary['GrossProfit'] / vendor_sales_summary['TotalSalesDollars']
-) * 100
-```
+- 📊 Channel efficiency varies widely
+    → Paid Search & Organic Search outperform Social & Email
 
-### 3️⃣ Stock Turnover Classification (DAX)
+- 👥 Sales performance is uneven
+    → Top SDRs/SRs close significantly more deals than average
 
-```DAX
-StockTurnover Category = 
-VAR ST = vendor_sales_summary[StockTurnover]
-RETURN
-    IF(ST < 1, "Low", IF(ST < 3, "Medium", "High"))
-```
+- 🚚 Operational delays exist but are controllable
+    → Only ~8% delayed, but variability suggests process gaps
 
-### 4️⃣ Top 10 Vendors (DAX)
+---
 
-```DAX
-Vendor Rank = 
-RANKX(
-    ALL(vendor_sales_summary[VendorName]),
-    CALCULATE(SUM(vendor_sales_summary[TotalPurchaseDollars])),
-    , DESC
-)
+## **📌 Business Recommendations**
 
-Is Top 10 Vendor = IF([Vendor Rank] <= 10, 1, 0)
-```
+* Reallocate marketing spend toward **high-conversion channels**
+- Introduce **lead scoring** to prioritize fast-moving prospects
+- Use top SDRs/SRs as benchmark profiles
+- Improve **carrier handover processes** to reduce delivery variance
+- Track funnel KPIs continuously using the Power BI dashboard
+- 
+
+---
+
+## **🔮 Next Steps**
+
+If extended further, this project could include:
+- Revenue & deal size impact analysis
+- Predictive modeling for deal conversion
+- Cohort-based customer lifetime value (CLV)
+- A/B testing landing pages with low conversion
 
 ---
 
 ## ⚠️ Limitations
 
-* Analysis relies on historical transactional data; seasonality or one-off promotions can skew turnover and margin estimates.
-* Purchase price master and freight allocation assumed matching by brand — imperfect mapping can introduce noise.
-* Confidence intervals are computed at vendor-aggregated level; SKU-level variability may differ.
+- No direct revenue field linked to deals
+- Customer repeat purchases were not present in this dataset
+- Seller → order linkage was limited, requiring careful interpretation
 
 ---
 
-## 💡 What I learned
+## 🎯 Why This Project Matters
 
-* Building a single source of truth (`vendor_sales_summary`) that blends purchases, sales, pricing and freight is critical to meaningful vendor-level analytics.
-* Small modeling choices (sorting axis, cumulative measures) dramatically change visualization behavior; always validate measures against a trusted simple script (I compared every visual to a Python plot).
-* Communicating results for procurement requires numbers and narratives: percent of spend, unsold capital, and actionable next steps.
+This is not a simple Kaggle EDA.
 
----
+It demonstrates:
 
-## ➡️ Next steps (recommended)
+- Structured thinking
+- Business-driven analytics
+- End-to-end ownership (EDA → Python → Dashboard)
+- Clear communication of insights
 
-1. **Automate ingestion:** schedule the SQLite ingestion and a refresh for Power BI so buyers see near-real-time numbers.
-2. **Pricing experiments:** run A/B promotions on 5–10 low-volume high-margin brands and measure lift and margin impact.
-3. **Supplier scorecard:** add supplier-level KPIs (OTIF, returns, defect rate) to the dashboard for holistic vendor management.
-4. **Advanced analytics:** build a demand-forecasting module (time-series) to reduce over-ordering and recommend optimal reorder points.
-
----
-
-## 🔍 Final findings
-
-High-margin vendors may benefit from better pricing strategies, while top-selling vendors could focus on cost efficiency.
-
-** 🚀 Final Recommendations (summary):**
-
-* Re-evaluate pricing for low-sales, high-margin brands to boost sales volume without sacrificing profitability.
-* Diversify vendor partnerships to reduce dependency on a few suppliers and mitigate supply chain risks.
-* Leverage bulk purchasing advantages to maintain competitive pricing while optimizing inventory management.
-* Optimize slow-moving inventory by adjusting purchase quantities, launching clearance sales, or revising storage strategies.
-* Enhance marketing and distribution strategies for low-performing vendors to drive higher sales volumes without compromising profit margins.
-
-By implementing these recommendations, the company can achieve sustainable profitability, mitigate risks, and enhance overall operational efficiency.
+It reflects how a junior data analyst would actually work in a real company.
 
 ---
 
