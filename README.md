@@ -1,175 +1,255 @@
-# **▼📊 Business Funnel Analysis for Revenue Optimization**
+<div align="center">
+  <img width="320px" src="Images/logo.png" />
+</div>
 
-**Industry:** E-Commerce / B2B Marketplace Analytics
+<h1 align="center">Olist Sales Funnel & Conversion Performance Analysis</h1>
 
----
-
-## 🧠 **Executive summary**
-
-This project analyzes the complete business funnel — from Marketing Qualified Leads (MQLs) to Closed Deals and finally Order Delivery performance — using a real-world, multi-table dataset modeled on company-grade data.
-
-As a beginner Data Analyst, I approached this like a real analytics engagement:
-- First, understand the data deeply (EDA)
-- Then, answer clear business questions using Python
-- Finally, translate insights into a Power BI dashboard for stakeholders
-
-**🚀 Key Business Impact (at a glance)**
-- 📉 Only ~10% of MQLs convert into closed deals → clear funnel leakage
-- ⚡ Deals closed within 15 days account for the majority of conversions
-- 📣 Paid Search & Organic Search outperform other channels in conversion efficiency
-- 🧑‍💼 Conversion performance varies significantly across SDRs, SRs, and business segments
-- 🚚 ~8% of delivered orders are delayed, with carrier handover showing the highest variability
-
-These insights directly inform marketing spend optimization, sales prioritization, and operational improvements.
+<h3 align="center">Industry: E-Commerce | Online Marketplace</h3>
 
 ---
 
-## ❗ **Business problem**
+<table align="center">
+  <tr>
+    <td width="1440">
+<h2 align="center">Client Background (Business Scenario)</h2>
 
-**The business lacked a single, connected view of:**
-- How efficiently leads move through the funnel
-- Which channels, segments, and teams drive conversions
-- Where time delays and bottlenecks occur post-sale
+<p>
+Olist is a large Brazilian e-commerce marketplace that connects sellers, buyers, and logistics partners through a unified platform. The business operates across multiple product categories and relies heavily on digital marketing channels to acquire sellers and close deals.
+</p>
 
-**Stakeholders needed answers to questions like:**
-- _Where are we losing leads?_
-- _Which channels and sales reps perform best?_
-- _How fast do deals close — and does speed matter?_
-- _Are delivery delays impacting overall performance?_
-- 
----
+<p>
+At the time of analysis, Olist was experiencing <strong>low funnel conversion efficiency</strong> and <strong>limited visibility into post-conversion performance</strong>, making it difficult to understand where leads drop, which channels perform best, and where operational delays occur after deal closure.
+</p>
 
-## 🖼️ **Dashboard Preview:**
+<p>
+Reporting to the <strong>Marketing, Sales, and Operations teams</strong>, an end-to-end funnel and operational analysis was conducted using <strong>Python for analysis and Power BI for executive reporting</strong>. The goal was to move the organization from reactive reporting to a <strong>data-driven decision-making framework</strong>.
+</p>
 
-> ```markdown
-> ![Dashboard](./Images/Dashboard.gif)
-> ```
+<strong>Key Focus Areas of the Analysis:</strong>
+<ul>
+  <li>Quantifying lead-to-deal conversion performance across the funnel.</li>
+  <li>Evaluating marketing channel efficiency and deal velocity.</li>
+  <li>Identifying operational bottlenecks in order fulfillment.</li>
+</ul>
 
-![Dashboard](./Images/Dashboard.gif)
+<p>
+The insights from this project support <strong>strategic planning, marketing optimization, and operational improvement initiatives</strong> aimed at improving conversion efficiency and customer experience.
+</p>
 
----
-
-## 🛠️ **Methodology (What I Did & Why)**
-
-**1️⃣ Exploratory Data Analysis (EDA)**
-- Validated data quality across 5 cleaned datasets
-- Checked nulls, date consistency, unique keys, and distributions
-- Ensured datasets were **analysis-ready** before modeling
-
-**2️⃣ Funnel & Conversion Analysis (Python)**
-Used Pandas, NumPy, Matplotlib, Seaborn to:
-- Calculate overall and segmented conversion rates
-- Analyze conversion by:
-    - Marketing channel (origin)
-    - Business segment
-    - Lead type & behavior profile
-- Identify **high-leakage funnel stages**
-
-**3️⃣ Time-Based & Velocity Analysis**
-- Measured time-to-close from first contact → deal won
-- Segmented deals into velocity buckets (0–7, 8–15, 30+ days)
-- Proved that **faster closures strongly correlate with higher success**
-
-**4️⃣ Sales Team Performance**
-- Ranked top SDRs and SRs by closed deals
-- Highlighted performance skew instead of assuming uniform productivity
-
-**5️⃣ Order & Delivery Analytics**
-- Measured:
-    - Average delivery time (~12 days)
-    - Delay rate (~8%)
-    - Stage-wise time variability
-- Identified **carrier handover** as the biggest operational bottleneck
-
-**6️⃣ Dashboarding (Power BI)**
-- Built a **2-page interactive dashboard**
-- Single slicer: `business_segment`
-- Designed visuals for executives, sales leaders, and ops teams
-- Avoided circular relationships and unnecessary DAX complexity
+   </td>
+  </tr>
+</table>
 
 ---
 
-## 🧩 **Skills & tools used**
+<h2 align="center">Executive Summary</h2>
+<table align="center">
+  <tr>
+    <td width="1440">
+      <p>
+This project analyzes Olist’s end-to-end sales funnel — from Marketing Qualified Leads (MQLs) to closed deals and order fulfillment — to identify conversion inefficiencies and operational bottlenecks.
+      </p>
 
-- **Python:** Pandas, NumPy, Matplotlib, Seaborn
-- **EDA & Statistical Thinking**
-- **Business Funnel Analysis**
-- **Time-Series & Velocity Metrics**
-- **Power BI:** Data Modeling, Relationships, DAX, Visual Design
-- **SQL-style joins & data preparation**
-- **Storytelling with data**
+<strong>High-Level Business Impact:</strong>
+<ul>
+  <li>Identified an overall <strong>~10.4% MQL → Closed Deal conversion rate</strong>, highlighting significant early-funnel drop-off.</li>
+  <li>Revealed <strong>paid and organic search channels</strong> as the most efficient sources, converting up to <strong>~12–15 deals per 100 MQLs</strong>.</li>
+  <li>Found that <strong>most deals close within 30 days</strong>, with conversion probability dropping sharply beyond this window.</li>
+  <li>Uncovered that <strong>~8% of delivered orders miss estimated delivery timelines</strong>, with the highest variability occurring in the carrier-to-delivery stage.</li>
+</ul>
 
----
+<p>
+<strong>Outcome:</strong> A two-page Power BI dashboard enabling leadership to monitor funnel health, channel efficiency, sales performance, and fulfillment reliability through a single, business-segment-driven view.
+</p>
 
-## **📈 Results & Insights **
-
-- 🔻 Low MQL → Closed conversion (~10%)
-    → Indicates need for better lead qualification or channel optimization
-
-- 🏎️ Fast deals win
-    → Majority of successful deals close within 15 days
-
-- 📊 Channel efficiency varies widely
-    → Paid Search & Organic Search outperform Social & Email
-
-- 👥 Sales performance is uneven
-    → Top SDRs/SRs close significantly more deals than average
-
-- 🚚 Operational delays exist but are controllable
-    → Only ~8% delayed, but variability suggests process gaps
+   </td>
+  </tr>
+</table>
 
 ---
 
-## **📌 Business Recommendations**
+<h2 align="center">Dashboard Walkthrough</h2>
 
-* Reallocate marketing spend toward **high-conversion channels**
-- Introduce **lead scoring** to prioritize fast-moving prospects
-- Use top SDRs/SRs as benchmark profiles
-- Improve **carrier handover processes** to reduce delivery variance
-- Track funnel KPIs continuously using the Power BI dashboard
-- 
-
----
-
-## **🔮 Next Steps**
-
-If extended further, this project could include:
-- Revenue & deal size impact analysis
-- Predictive modeling for deal conversion
-- Cohort-based customer lifetime value (CLV)
-- A/B testing landing pages with low conversion
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="/Images/dashboard_1.gif" style="max-width:100%; height:auto; border-radius:10px;" />
+      <p><strong>Executive Performance Overview</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="/Images/Dashboard2.jpg" style="max-width:100%; height:auto; border-radius:10px;" />
+      <p><strong>Sales & Delivery Insights</strong></p>
+    </td>
+  </tr>
+</table>
 
 ---
 
-## ⚠️ Limitations
+<h2 align="center">Business Problem</h2>
+<table align="center">
+  <tr>
+    <td width="1440">
+<p>
+Olist lacked a unified view of how leads progress through the funnel and how operational performance impacts downstream outcomes.
+</p>
 
-- No direct revenue field linked to deals
-- Customer repeat purchases were not present in this dataset
-- Seller → order linkage was limited, requiring careful interpretation
+<ul>
+  <li>Which marketing channels generate high-quality leads?</li>
+  <li>How fast do deals convert, and where does velocity decline?</li>
+  <li>Which fulfillment stages introduce the most delivery risk?</li>
+</ul>
+
+<p>
+Without this visibility, marketing spend optimization, sales prioritization, and logistics improvements were largely reactive rather than data-driven.
+</p>
+
+<strong>Objective:</strong>
+Build a structured analytical framework to diagnose funnel drop-offs, quantify conversion efficiency, and identify operational bottlenecks impacting customer experience.
+    </td>
+  </tr>
+</table>
 
 ---
 
-## 🎯 Why This Project Matters
+<h2 align="center">Methodology & Analytical Approach</h2>
+<table align="center">
+  <tr>
+    <td width="1440">
+<ul>
+  <li><strong>Exploratory Data Analysis (EDA):</strong> Assessed missing values, distributions, and data consistency across marketing, sales, product, and order datasets.</li>
+  <li><strong>Funnel Analysis:</strong> Measured MQL → Closed Deal conversion rates and evaluated performance across channels, lead types, and behavioral profiles.</li>
+  <li><strong>Time-Based Analysis:</strong> Analyzed deal closing velocity and order delivery timelines to identify speed-related friction.</li>
+  <li><strong>Operational Diagnostics:</strong> Used distribution and variability analysis to isolate fulfillment bottlenecks.</li>
+</ul>
 
-This is not a simple Kaggle EDA.
-
-It demonstrates:
-
-- Structured thinking
-- Business-driven analytics
-- End-to-end ownership (EDA → Python → Dashboard)
-- Clear communication of insights
-
-It reflects how a junior data analyst would actually work in a real company.
+<p>
+This combination of descriptive and diagnostic analysis enabled a holistic view of both revenue generation and operational execution.
+</p>
+    </td>
+  </tr>
+</table>
 
 ---
 
-## 👋 Contact
+<h2 align="center">Skills & Tools Used</h2>
+<table align="center">
+  <tr>
+    <td width="1440">
+<ul>
+  <li><strong>Python:</strong> Pandas, NumPy, Matplotlib, Seaborn</li>
+  <li><strong>Data Analysis:</strong> Funnel Analysis, Time-to-Event Analysis, Distribution Analysis</li>
+  <li><strong>Visualization:</strong> Power BI, DAX, Interactive Slicers</li>
+  <li><strong>Business Analytics:</strong> Conversion Metrics, Operational KPIs</li>
+</ul>
+    </td>
+  </tr>
+</table>
 
-If you’d like to discuss the code, the dashboard, reach out on GitHub or email (kaifsdkpro@gmail.com).
+---
 
-⭐ **If you found this project insightful, don’t forget to star ⭐ this repository!**  
-📬 *Let’s connect on [LinkedIn](https://www.linkedin.com/in/kaifsayed57/)
- — open to data analyst and Excel-based analytics roles.
+<h2 align="center">Insights Deep-Dive (Quantified)</h2>
+<table align="center">
+  <tr>
+    <td width="1440">
 
-*Made with ❤️ — Kaif Anis Sayed*
+<h3>1. Funnel Conversion Efficiency</h3>
+<ul>
+  <li>Only <strong>~10.4% of MQLs</strong> convert into closed deals, indicating that nearly <strong>9 out of 10 leads drop</strong> before deal closure.</li>
+  <li>Conversion performance varies significantly by acquisition channel, confirming uneven lead quality.</li>
+</ul>
+
+<h3>2. Marketing Channel Effectiveness</h3>
+<ul>
+  <li><strong>Paid Search and Organic Search</strong> deliver the highest efficiency, converting approximately <strong>12–15 closed deals per 100 MQLs</strong>.</li>
+  <li>Channels such as <strong>email, display, and social</strong> generate volume but underperform in conversion efficiency, suggesting lead quality issues.</li>
+</ul>
+
+<h3>3. Conversion Velocity</h3>
+<ul>
+  <li>The majority of closed deals occur within <strong>0–30 days</strong> of first contact.</li>
+  <li>Deals exceeding <strong>60 days</strong> show a sharp decline in conversion likelihood, signaling diminishing returns on prolonged sales cycles.</li>
+</ul>
+
+<h3>4. Operational Fulfillment Bottlenecks</h3>
+<ul>
+  <li>Average delivery time is approximately <strong>12 days</strong>, but variability is high.</li>
+  <li>The <strong>carrier-to-customer delivery stage</strong> exhibits the widest spread and most outliers, identifying it as the primary logistics bottleneck.</li>
+  <li>Approximately <strong>8% of delivered orders</strong> arrive later than estimated, directly impacting customer experience.</li>
+</ul>
+
+   </td>
+  </tr>
+</table>
+
+---
+
+<h2 align="center">Results & Business Recommendations</h2>
+<table align="center">
+  <tr>
+    <td width="1440">
+
+<h3>📌 Marketing & Sales Optimization</h3>
+<ul>
+  <li>Reallocate marketing budget toward <strong>paid and organic search</strong>, which convert up to <strong>2–3× more efficiently</strong> than lower-performing channels.</li>
+  <li>Prioritize leads expected to close within <strong>30 days</strong> to maximize sales productivity.</li>
+</ul>
+
+<h3>📌 Operations & Fulfillment</h3>
+<ul>
+  <li>Focus process improvements on the <strong>carrier-to-delivery stage</strong> to reduce variability and missed delivery estimates.</li>
+  <li>Use delivery delay metrics as an early-warning KPI to prevent customer dissatisfaction.</li>
+</ul>
+
+   </td>
+  </tr>
+</table>
+
+---
+
+<h2 align="center">Key Learnings</h2>
+<table align="center">
+  <tr>
+    <td width="1440">
+<ul>
+  <li>Funnel metrics must be modeled carefully to avoid misleading conclusions when datasets operate at different granularities.</li>
+  <li>Average values alone hide operational risk — variability analysis is critical for bottleneck identification.</li>
+  <li>Strong dashboards focus on decision-making, not just visualization.</li>
+</ul>
+    </td>
+  </tr>
+</table>
+
+---
+
+<h2 align="center">Limitations</h2>
+<table align="center">
+  <tr>
+    <td width="1440">
+<ul>
+  <li>No direct linkage between closed deals and individual orders limited full end-to-end attribution.</li>
+  <li>Customer-level retention analysis was constrained by the absence of repeat purchase behavior in the dataset.</li>
+</ul>
+    </td>
+  </tr>
+</table>
+
+---
+
+<h2 align="center">Next Steps</h2>
+<table align="center">
+  <tr>
+    <td width="1440">
+<ul>
+  <li>Integrate deal-to-order identifiers to enable full funnel attribution.</li>
+  <li>Extend analysis with cohort-based retention metrics once repeat purchase data is available.</li>
+  <li>Deploy dashboard refresh automation for near real-time monitoring.</li>
+</ul>
+    </td>
+  </tr>
+</table>
+
+---
+
+<h4 align="center"><em>Built with Python & Power BI — Kaif Anis Sayed</em></h4>
