@@ -263,7 +263,7 @@ This combination of descriptive and diagnostic analysis enabled a holistic view 
       </p>
 
   <p>
-        📧 <strong>Email:</strong> kaifsdkpro@gmail.com
+        📧 <strong>Email:</strong> kaif.sdk.uae@gmail.com
       </p>
 
   <p>
